@@ -16,7 +16,7 @@ Here are my goals:
     - Key internal conflicts are resolved
     - I let go of all my grievances
     - I processed all my key traumas
-    - I got rid of fundamental anxiety
+    - I calm down fundamental anxiety
   - I am kind to myself
     - I give myself needed time
     - I calmed down fundamental shame
