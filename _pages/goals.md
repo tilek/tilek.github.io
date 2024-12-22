@@ -16,13 +16,14 @@ Here are my goals:
     - Key internal conflicts are resolved
     - I let go of all my grievances
     - I processed all my key traumas
-    - I calm down fundamental anxiety
+    - I calmed down fundamental anxiety
   - I am kind to myself
     - I give myself needed time
     - I calmed down fundamental shame
     - I calmed down self-flagellation habits
     - I accept myself in a healthy way
   - I process my emotions in a healthy way
+
 - Pleasant restorative sleep
 
 - Good physical health
@@ -60,3 +61,17 @@ Here are my goals:
   - writing
   - investing
   - donating
+
+In relation to those goals I see the following stages of personal life:
+
+ 1. Being a kid
+ 2. Being an adult without children
+ 3. Being married & raising children
+ 4. Being an adult with grown up children
+
+In relation to career goals I see the following stages:
+
+ 1. Being a student
+ 2. Working full-time
+ 3. Building a self-sustainable company
+ 4. Contributing to the society in other ways
