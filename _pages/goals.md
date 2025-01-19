@@ -32,7 +32,7 @@ Here are my goals:
   - Being strong & confident
   - Being physically flexible
 - Healthy and delicious food
-- Comfortable durable clothes that help me be happy
+- Comfortable durable pleasant clothes that help me be happy
 - Weekly & more often walks in the nature and parks
 
 - Good relationships in general
