@@ -41,16 +41,17 @@ pagination:
           <p>&bull;</p>
         {% endunless %}
       {% endfor %}
-      {% if site.display_categories.size > 0 and site.display_tags.size > 0 %}
-        <p>&bull;</p>
-      {% endif %}
+      {% assign displayed_category = false %}
       {% for category in site.display_categories %}
-        <li>
-          <i class="fa-solid fa-tag fa-sm"></i> <a href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}">{{ category }}</a>
-        </li>
-        {% unless forloop.last %}
-          <p>&bull;</p>
-        {% endunless %}
+        {% if site.categories[category].size > 0 %}
+          {% if site.display_tags.size > 0 or displayed_category %}
+            <p>&bull;</p>
+          {% endif %}
+          <li>
+            <i class="fa-solid fa-tag fa-sm"></i> <a href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}">{{ category }}</a>
+          </li>
+          {% assign displayed_category = true %}
+        {% endif %}
       {% endfor %}
     </ul>
   </div>

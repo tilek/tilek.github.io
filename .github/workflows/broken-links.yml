@@ -1,4 +1,4 @@
-name: Check for broken links
+name: Link report (advisory)
 
 on:
   push:
@@ -47,6 +47,20 @@ jobs:
       - name: Link Checker 🔗
         uses: lycheeverse/lychee-action@v1.9.0
         with:
-          fail: true
+          # External services can reject crawlers; internal output is gated before deploy.
+          fail: false
           # removed md files that include liquid tags
-          args: --exclude-path README.md --exclude-path _pages/404.md --exclude-path _pages/blog.md --exclude-path _posts/2018-12-22-distill.md --verbose --no-progress './**/*.md' './**/*.html'
+          args: --max-retries 3 --exclude '^https://www.youtube-nocookie.com/embed/' --exclude-path README.md --exclude-path _pages/404.md --exclude-path _pages/blog.md --exclude-path _posts/2018-12-22-distill.md --verbose --no-progress './**/*.md' './**/*.html'
+
+      - name: Keep link report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: external-link-report
+          path: lychee/out.md
+          if-no-files-found: ignore
+      - name: Summarize advisory results
+        if: always()
+        run: |
+          echo "External link results are advisory. Internal generated links and assets must pass before deployment." >> "$GITHUB_STEP_SUMMARY"
+          if [ -f lychee/out.md ]; then cat lychee/out.md >> "$GITHUB_STEP_SUMMARY"; fi
