@@ -1,7 +1,17 @@
 <!doctype html>
-<html lang="{{ site.lang }}">
-  <!-- Head -->
+<html lang="{{ site.lang | default: 'en' }}">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      {% unless page.url == '/' %}{{ page.title | escape }} · {% endunless %}
+      {{ site.title | escape }}
+    </title>
+    <meta name="description" content="{{ page.description | default: site.description | strip_html | strip | escape }}">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/skeleton/base.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/skeleton/skeleton.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/minimal.css' | relative_url }}">
     {% if page.redirect %}
       {% if page.redirect == true %}
         {% assign redirect = site.baseurl | append: '/' %}
@@ -12,61 +22,61 @@
       {% endif %}
       <meta http-equiv="refresh" content="3; url={{ redirect }}">
     {% endif %}
-    {% include head.liquid %}
   </head>
-
-  <!-- Body -->
-  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
-    <!-- Header -->
-    {% include header.liquid %}
-
-    <!-- Content -->
-    <div class="container mt-5" role="main">
-      {% if page.toc and page.toc.sidebar %}
-        {% if page.toc.sidebar == 'right' %}
-          <div class="row">
-            <!-- main content area -->
-            <div class="col-sm-9">{{ content }}</div>
-            <!-- sidebar, which will move to the top on a small screen -->
-            <div class="col-sm-3">
-              <nav id="toc-sidebar" class="sticky-top"></nav>
-            </div>
-          </div>
-        {% else %}
-          <div class="row">
-            <!-- sidebar, which will move to the top on a small screen -->
-            <div class="col-sm-3">
-              <nav id="toc-sidebar" class="sticky-top"></nav>
-            </div>
-            <!-- main content area -->
-            <div class="col-sm-9">{{ content }}</div>
-          </div>
-        {% endif %}
-      {% else %}
+  <body>
+    <div class="container">
+      <header class="four columns">
+        <h3>
+          <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        </h3>
+        <nav aria-label="Main navigation">
+          <ul>
+            <li>
+              <a
+                href="{{ '/' | relative_url }}"
+                {% if page.url == '/' %}
+                  aria-current="page"
+                {% endif %}
+                >about</a
+              >
+            </li>
+            {% assign navigation = site.pages | sort: 'nav_order' %}
+            {% for item in navigation %}
+              {% if item.nav %}
+                {% if item.dropdown %}
+                  {% for child in item.children %}
+                    {% unless child.title == 'divider' %}
+                      <li>
+                        <a href="{{ child.permalink }}">{{ child.title }}</a>
+                      </li>
+                    {% endunless %}
+                  {% endfor %}
+                {% else %}
+                  <li>
+                    <a
+                      href="{{ item.url | relative_url }}"
+                      {% if page.url == item.url %}
+                        aria-current="page"
+                      {% endif %}
+                    >
+                      {{- item.title -}}
+                    </a>
+                  </li>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </nav>
+      </header>
+      <main class="eleven columns offset-by-one" id="content">
         {{ content }}
-      {% endif %}
+        <footer>
+          <small
+            >© {{ 'now' | date: '%Y' }}
+            {{ site.title }} · <a href="https://jekyllrb.com/">Jekyll</a> · <a href="https://github.com/dhg/Skeleton">Skeleton</a></small
+          >
+        </footer>
+      </main>
     </div>
-
-    <!-- Footer -->
-    {% include footer.liquid %}
-
-    <!-- JavaScripts -->
-    {% include scripts/jquery.liquid %}
-    {% include scripts/bootstrap.liquid %}
-    {% include scripts/masonry.liquid %}
-    {% include scripts/mermaid.liquid %}
-    {% include scripts/diff2html.liquid %}
-    {% include scripts/leaflet.liquid %}
-    {% include scripts/chartjs.liquid %}
-    {% include scripts/echarts.liquid %}
-    {% include scripts/vega.liquid %}
-    {% include scripts/tikzjax.liquid %}
-    {% include scripts/misc.liquid %}
-    {% include scripts/badges.liquid %}
-    {% include scripts/mathjax.liquid %}
-    {% include scripts/analytics.liquid %}
-    {% include scripts/progressBar.liquid %}
-    {% include scripts/wechatModal.liquid %}
-    {% include scripts/imageLayouts.liquid %}
   </body>
 </html>
