@@ -5,12 +5,12 @@ nav: true
 nav_order: 3
 permalink: /goals/
 subtitle:
-
 ---
 
 Here are my goals:
 
 - Good mental health
+
   - General peace of mind
     - I have calm dreams
     - Key internal conflicts are resolved
@@ -48,6 +48,7 @@ Here are my goals:
 - Good relationships with my friends
 
 - I built a great company
+
   - it is profitable
   - it provides excellent products and services for its clients
   - it is great for employees
@@ -64,14 +65,14 @@ Here are my goals:
 
 In relation to those goals I see the following stages of personal life:
 
- 1. Being a kid
- 2. Being an adult without children
- 3. Being married & raising children
- 4. Being an adult with grown up children
+1.  Being a kid
+2.  Being an adult without children
+3.  Being married & raising children
+4.  Being an adult with grown up children
 
 In relation to career goals I see the following stages:
 
- 1. Being a student
- 2. Working full-time
- 3. Building a self-sustainable company
- 4. Contributing to the society in other ways
+1.  Being a student
+2.  Working full-time
+3.  Building a self-sustainable company
+4.  Contributing to the society in other ways
